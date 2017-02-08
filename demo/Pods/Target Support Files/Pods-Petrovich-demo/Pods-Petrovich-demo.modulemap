@@ -1,0 +1,6 @@
+framework module Pods_Petrovich_demo {
+  umbrella header "Pods-Petrovich-demo-umbrella.h"
+
+  export *
+  module * { export * }
+}
