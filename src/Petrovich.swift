@@ -13,23 +13,61 @@ class Petrovich: PetrovichProtocol {
     struct Mod {
         
         let letters: Int
-        let value: String
+        let suffix: String
         
         func apply(_ value: String) -> String {
-            return value
+            let index = value.index(value.endIndex, offsetBy: -letters)
+            // copy substring without ending characters
+            let string = value.substring(to: index)
+            // add suffix value
+            return string + suffix
         }
     }
     
     struct Rule {
         
         enum Kind {
-            case exception
-            case suffixe
+            case exception(Bool) // bool is for first word flag
+            case suffix([Declension : Mod])
         }
         
-        let type: Kind
+        let kind: Kind
         let gender: Gender
         let tests: [String]
+        
+        func submits(_ value: String, gender: Gender, first: Bool) -> Bool {
+            if gender != self.gender && self.gender != .androgynous {
+                return false
+            }
+            for test in tests {
+                switch kind {
+                case .exception(let firstWord):
+                    if first == firstWord {
+                        if value.lowercased() == test {
+                            return true
+                        }
+                    }
+                case .suffix(_):
+                    if value.lowercased().hasSuffix(test) {
+                        return true
+                    }
+                }
+            }
+            return false
+        }
+        
+        func apply(_ value: String, declension: Declension) -> String {
+            switch kind {
+            case .exception(_):
+                return value
+            case .suffix(let mods):
+                if let mod = mods[declension] {
+                    return mod.apply(value)
+                } else {
+                    return value
+                }
+            }
+        }
     }
     
     fileprivate let firstnameRules: [Rule]
@@ -44,14 +82,32 @@ class Petrovich: PetrovichProtocol {
     
     // MARK: - petrovich protocol methods
     func firstname(_ value: String, gender: Gender, declension: Declension) -> String {
-        return value
+        return process(value, gender: gender, declension: declension, with: firstnameRules)
     }
     
     func middlename(_ value: String, gender: Gender, declension: Declension) -> String {
-        return value
+        return process(value, gender: gender, declension: declension, with: middlenameRules)
     }
     
     func lastname(_ value: String, gender: Gender, declension: Declension) -> String {
-        return value
+        return process(value, gender: gender, declension: declension, with: lastnameRules)
+    }
+    
+    fileprivate func process(_ value: String, gender: Gender, declension: Declension, with rules: [Rule]) -> String {
+        let words = value.components(separatedBy: "-")
+        // iterate through the words
+        var result = ""
+        for index in 0..<words.count {
+            let first = index == 0
+            let word = words[index]
+            // iterate through the rules
+            for rule in rules {
+                if rule.submits(word, gender: gender, first: first) {
+                    result += "-" + rule.apply(word, declension: declension)
+                    break
+                }
+            }
+        }
+        return result
     }
 }

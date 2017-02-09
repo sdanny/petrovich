@@ -25,12 +25,17 @@ class PetrovichModTests: XCTestCase {
     }
 
     func testEmptyModReturnsValueItself() {
-        let mod = Petrovich.Mod(letters: 0, value: "")
+        let mod = Petrovich.Mod(letters: 0, suffix: "")
         expect(mod.apply("Value")).to(equal("Value"))
     }
     
     func testOneLetterAndNoReplacingValue() {
-        let mod = Petrovich.Mod(letters: 1, value: "")
+        let mod = Petrovich.Mod(letters: 1, suffix: "")
         expect(mod.apply("Value")).to(equal("Valu"))
+    }
+    
+    func testTwoLettersAndSuffix() {
+        let mod = Petrovich.Mod(letters: 2, suffix: "его")
+        expect(mod.apply("Непомнящий")).to(equal("Непомнящего"))
     }
 }

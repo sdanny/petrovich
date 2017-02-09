@@ -11,6 +11,7 @@
 		60474DA409FC357007FCF482 /* Pods_Petrovich_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D10DF2104C0FB4C5C9A8AD7 /* Pods_Petrovich_demoTests.framework */; };
 		9D358CA51E4B5D0A00B25C08 /* Petrovich.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D358CA31E4B5D0A00B25C08 /* Petrovich.swift */; };
 		9D358CA61E4B5D0A00B25C08 /* PetrovichProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D358CA41E4B5D0A00B25C08 /* PetrovichProtocol.swift */; };
+		9D358CA81E4C4E4D00B25C08 /* PetrovichRuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D358CA71E4C4E4D00B25C08 /* PetrovichRuleTests.swift */; };
 		9D823DDC1E4B2209004A8A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D823DDB1E4B2209004A8A53 /* AppDelegate.swift */; };
 		9D823DDE1E4B2209004A8A53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D823DDD1E4B2209004A8A53 /* ViewController.swift */; };
 		9D823DE01E4B2209004A8A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D823DDF1E4B2209004A8A53 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		948549F23CC0172DF2E1E4E6 /* Pods_Petrovich_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petrovich_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D358CA31E4B5D0A00B25C08 /* Petrovich.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Petrovich.swift; sourceTree = "<group>"; };
 		9D358CA41E4B5D0A00B25C08 /* PetrovichProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetrovichProtocol.swift; sourceTree = "<group>"; };
+		9D358CA71E4C4E4D00B25C08 /* PetrovichRuleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetrovichRuleTests.swift; sourceTree = "<group>"; };
 		9D823DD81E4B2209004A8A53 /* Petrovich-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Petrovich-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D823DDB1E4B2209004A8A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D823DDD1E4B2209004A8A53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				9D823E1F1E4B411A004A8A53 /* PetrovichTests.swift */,
 				9D823E271E4B417D004A8A53 /* PetrovichModTests.swift */,
+				9D358CA71E4C4E4D00B25C08 /* PetrovichRuleTests.swift */,
 				9D823E211E4B411A004A8A53 /* Info.plist */,
 			);
 			path = PetrovichTests;
@@ -605,6 +608,7 @@
 			files = (
 				9D823E201E4B411A004A8A53 /* PetrovichTests.swift in Sources */,
 				9D823E281E4B417D004A8A53 /* PetrovichModTests.swift in Sources */,
+				9D358CA81E4C4E4D00B25C08 /* PetrovichRuleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
