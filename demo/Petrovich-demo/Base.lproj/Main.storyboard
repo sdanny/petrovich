@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -653,7 +655,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Petrovich_demo" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
@@ -679,11 +681,176 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Petrovich_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fg-Yi-Ii7">
+                                <rect key="frame" x="20" y="228" width="374" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="qAE-If-ojO"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="G8i-6R-YMO">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="HhE-eS-IGF">
+                                <rect key="frame" x="19" y="203" width="79" height="18"/>
+                                <buttonCell key="cell" type="radio" title="мужской" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="s1p-rA-ceS">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="genderRadioButtonDidSelect:" target="XfG-lQ-9wD" id="cC6-Ub-7Hk"/>
+                                </connections>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="k4T-Wm-zpW">
+                                <rect key="frame" x="103" y="203" width="78" height="18"/>
+                                <buttonCell key="cell" type="radio" title="женский" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="rOV-dT-dWH">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="genderRadioButtonDidSelect:" target="XfG-lQ-9wD" id="4z3-R1-tyR"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5uM-Ay-PML">
+                                <rect key="frame" x="408" y="222" width="58" height="32"/>
+                                <buttonCell key="cell" type="push" title="Go" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e40-tY-s2z">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="goButtonDidSelect:" target="XfG-lQ-9wD" id="lhC-pN-71D"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4t-gl-hZF">
+                                <rect key="frame" x="18" y="179" width="32" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="род." placeholderString="" id="3vL-LB-sPl">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="183-6G-qrn">
+                                <rect key="frame" x="56" y="179" width="4" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="" id="Dgm-yf-7xb">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXH-wb-Dm7">
+                                <rect key="frame" x="18" y="152" width="29" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="дат." placeholderString="" id="u33-gp-ukU">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afk-ws-yaV">
+                                <rect key="frame" x="53" y="152" width="4" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="O5D-cH-43H">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NgE-sF-PC6">
+                                <rect key="frame" x="18" y="125" width="31" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="вин." placeholderString="" id="ZIs-0Z-P7H">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQO-c5-Fgs">
+                                <rect key="frame" x="55" y="125" width="4" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="5Qb-Q5-rEJ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIE-Qa-72h">
+                                <rect key="frame" x="18" y="98" width="29" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="тво." placeholderString="" id="AS4-4c-bBO">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoi-zO-5Kx">
+                                <rect key="frame" x="53" y="98" width="4" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="iQt-JH-mqL">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhv-3Z-fKl">
+                                <rect key="frame" x="18" y="71" width="31" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="пре." placeholderString="" id="P0I-Lk-trp">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJg-79-W9r">
+                                <rect key="frame" x="55" y="71" width="4" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="NrS-Zx-Igj">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="CIE-Qa-72h" firstAttribute="baseline" secondItem="yoi-zO-5Kx" secondAttribute="baseline" id="0tJ-6B-2wc"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="183-6G-qrn" secondAttribute="trailing" constant="20" id="1b3-uu-MoR"/>
+                            <constraint firstItem="CIE-Qa-72h" firstAttribute="leading" secondItem="a4t-gl-hZF" secondAttribute="leading" id="2ou-WD-A4w"/>
+                            <constraint firstItem="RXH-wb-Dm7" firstAttribute="top" secondItem="a4t-gl-hZF" secondAttribute="bottom" constant="10" id="3jr-pB-8An"/>
+                            <constraint firstItem="RXH-wb-Dm7" firstAttribute="leading" secondItem="a4t-gl-hZF" secondAttribute="leading" id="4H8-d1-5sI"/>
+                            <constraint firstItem="yoi-zO-5Kx" firstAttribute="leading" secondItem="CIE-Qa-72h" secondAttribute="trailing" constant="10" id="6S7-gL-2u6"/>
+                            <constraint firstItem="HhE-eS-IGF" firstAttribute="top" secondItem="1fg-Yi-Ii7" secondAttribute="bottom" constant="8" id="6g7-Ah-WL1"/>
+                            <constraint firstItem="5uM-Ay-PML" firstAttribute="leading" secondItem="1fg-Yi-Ii7" secondAttribute="trailing" constant="20" id="AqQ-fQ-zkQ"/>
+                            <constraint firstItem="NgE-sF-PC6" firstAttribute="top" secondItem="RXH-wb-Dm7" secondAttribute="bottom" constant="10" id="CEa-AV-Ttf"/>
+                            <constraint firstItem="a4t-gl-hZF" firstAttribute="baseline" secondItem="183-6G-qrn" secondAttribute="baseline" id="CRz-NB-zO9"/>
+                            <constraint firstItem="a4t-gl-hZF" firstAttribute="top" secondItem="HhE-eS-IGF" secondAttribute="bottom" constant="8" id="FUh-2F-Air"/>
+                            <constraint firstItem="k4T-Wm-zpW" firstAttribute="leading" secondItem="HhE-eS-IGF" secondAttribute="trailing" constant="8" id="GLK-n8-iTP"/>
+                            <constraint firstItem="a4t-gl-hZF" firstAttribute="leading" secondItem="HhE-eS-IGF" secondAttribute="leading" id="HX5-xS-3GN"/>
+                            <constraint firstItem="183-6G-qrn" firstAttribute="leading" secondItem="a4t-gl-hZF" secondAttribute="trailing" constant="10" id="KcT-XG-cgD"/>
+                            <constraint firstItem="1fg-Yi-Ii7" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="L11-ej-Xaa"/>
+                            <constraint firstItem="k4T-Wm-zpW" firstAttribute="centerY" secondItem="HhE-eS-IGF" secondAttribute="centerY" id="Lkp-JQ-mP6"/>
+                            <constraint firstItem="NgE-sF-PC6" firstAttribute="leading" secondItem="a4t-gl-hZF" secondAttribute="leading" id="Qpz-8M-WvK"/>
+                            <constraint firstItem="HhE-eS-IGF" firstAttribute="leading" secondItem="1fg-Yi-Ii7" secondAttribute="leading" id="R42-D3-Usv"/>
+                            <constraint firstItem="NgE-sF-PC6" firstAttribute="baseline" secondItem="LQO-c5-Fgs" secondAttribute="baseline" id="Tqy-J4-Ty2"/>
+                            <constraint firstItem="5uM-Ay-PML" firstAttribute="centerY" secondItem="1fg-Yi-Ii7" secondAttribute="centerY" id="XmZ-bE-wtQ"/>
+                            <constraint firstItem="zhv-3Z-fKl" firstAttribute="leading" secondItem="a4t-gl-hZF" secondAttribute="leading" id="e4V-AV-dsu"/>
+                            <constraint firstItem="afk-ws-yaV" firstAttribute="leading" secondItem="RXH-wb-Dm7" secondAttribute="trailing" constant="10" id="eul-FQ-jpa"/>
+                            <constraint firstAttribute="trailing" secondItem="5uM-Ay-PML" secondAttribute="trailing" constant="20" id="gWk-zb-eys"/>
+                            <constraint firstItem="RXH-wb-Dm7" firstAttribute="baseline" secondItem="afk-ws-yaV" secondAttribute="baseline" id="gu1-cc-aoN"/>
+                            <constraint firstItem="zhv-3Z-fKl" firstAttribute="top" secondItem="CIE-Qa-72h" secondAttribute="bottom" constant="10" id="jCv-7K-ve7"/>
+                            <constraint firstItem="zhv-3Z-fKl" firstAttribute="baseline" secondItem="wJg-79-W9r" secondAttribute="baseline" id="mhk-Si-93l"/>
+                            <constraint firstItem="LQO-c5-Fgs" firstAttribute="leading" secondItem="NgE-sF-PC6" secondAttribute="trailing" constant="10" id="nf2-mp-TWo"/>
+                            <constraint firstItem="1fg-Yi-Ii7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="psS-HW-kKO"/>
+                            <constraint firstItem="wJg-79-W9r" firstAttribute="leading" secondItem="zhv-3Z-fKl" secondAttribute="trailing" constant="10" id="qgR-hC-zaa"/>
+                            <constraint firstItem="CIE-Qa-72h" firstAttribute="top" secondItem="NgE-sF-PC6" secondAttribute="bottom" constant="10" id="sQa-VE-EyA"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="accOutput" destination="LQO-c5-Fgs" id="Yxg-kr-xlu"/>
+                        <outlet property="datOutput" destination="afk-ws-yaV" id="99p-yH-30Q"/>
+                        <outlet property="femaleRadioButton" destination="k4T-Wm-zpW" id="sDZ-5b-JuO"/>
+                        <outlet property="genOutput" destination="183-6G-qrn" id="ODn-dI-whO"/>
+                        <outlet property="inputField" destination="1fg-Yi-Ii7" id="f93-Bd-h1l"/>
+                        <outlet property="insOutput" destination="yoi-zO-5Kx" id="cYm-5b-Gxp"/>
+                        <outlet property="maleRadioButton" destination="HhE-eS-IGF" id="kAN-n3-fOh"/>
+                        <outlet property="preOutput" destination="wJg-79-W9r" id="FG0-yI-Omf"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
