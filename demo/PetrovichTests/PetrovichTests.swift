@@ -37,5 +37,4 @@ class PetrovichTests: XCTestCase {
         let result = petrovich.middlename(value, gender: .male, declension: .dative)
         expect(result).to(equal("Петровичу"))
     }
-    
 }

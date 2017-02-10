@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum Gender {
-    case male
+enum Gender: Int {
+    case male = 0
     case female
     case androgynous
 }
@@ -30,4 +30,15 @@ protocol PetrovichProtocol {
     func middlename(_ value: String, gender: Gender, declension: Declension) -> String
     
     func lastname(_ value: String, gender: Gender, declension: Declension) -> String
+}
+
+// since there's a bug where we cannot implement required initializer within an extension we should implement it inside the class
+protocol DictionarySerializable {
+    
+    init?(dict: [String : AnyObject])
+}
+
+protocol PropertyListSerializable {
+    
+    init?(withContentsOf plist: String)
 }
