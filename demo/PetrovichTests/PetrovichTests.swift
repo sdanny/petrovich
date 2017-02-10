@@ -37,4 +37,11 @@ class PetrovichTests: XCTestCase {
         let result = petrovich.middlename(value, gender: .male, declension: .dative)
         expect(result).to(equal("Петровичу"))
     }
+    
+    func testSharedPetrovichinstance() {
+        let petrovich = Petrovich.shared
+        expect(petrovich.firstname("Лаврентий", gender: .male, declension: .dative)).to(equal("Лаврентию"))
+        expect(petrovich.middlename("Павлович", gender: .male, declension: .dative)).to(equal("Павловичу"))
+        expect(petrovich.lastname("Берия", gender: .male, declension: .dative)).to(equal("Берии"))
+    }
 }

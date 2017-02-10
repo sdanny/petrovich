@@ -23,9 +23,14 @@ class Petrovich: PetrovichProtocol, PropertyListSerializable {
             return string + suffix
         }
         
+        init(letters: Int, suffix: String) {
+            self.letters = letters
+            self.suffix = suffix
+        }
+        
         // MARK: serialization
         init?(withContentsOf string: String) {
-            let letters = string.characters.count
+            let letters = string.components(separatedBy: "-").count - 1
             let suffix = string.trimmingCharacters(in: CharacterSet(charactersIn: "-"))
             self.letters = letters
             self.suffix = suffix
@@ -42,6 +47,12 @@ class Petrovich: PetrovichProtocol, PropertyListSerializable {
         let kind: Kind
         let gender: Gender
         let tests: [String]
+        
+        init(kind: Kind, gender: Gender, tests: [String]) {
+            self.kind = kind
+            self.gender = gender
+            self.tests = tests
+        }
         
         // MARK: serialization method
         init?(dict: [String : AnyObject]) {
