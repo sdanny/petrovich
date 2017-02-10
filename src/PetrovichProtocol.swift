@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum Gender: Int {
+public enum Gender: Int {
     case male = 0
     case female
     case androgynous
 }
 
-enum Declension: Int {
+public enum Declension: Int {
     case nominative = 0
     case genitive
     case dative

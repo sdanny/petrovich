@@ -8,14 +8,14 @@
 
 import Cocoa
 
-class Petrovich: PetrovichProtocol, PropertyListSerializable {
+open class Petrovich: PetrovichProtocol, PropertyListSerializable {
     
-    struct Mod: StringSerializable {
+    public struct Mod: StringSerializable {
         
         let letters: Int
         let suffix: String
         
-        func apply(_ value: String) -> String {
+        public func apply(_ value: String) -> String {
             let index = value.index(value.endIndex, offsetBy: -letters)
             // copy substring without ending characters
             let string = value.substring(to: index)
@@ -23,7 +23,7 @@ class Petrovich: PetrovichProtocol, PropertyListSerializable {
             return string + suffix
         }
         
-        init(letters: Int, suffix: String) {
+        public init(letters: Int, suffix: String) {
             self.letters = letters
             self.suffix = suffix
         }
@@ -37,9 +37,9 @@ class Petrovich: PetrovichProtocol, PropertyListSerializable {
         }
     }
     
-    struct Rule: DictionarySerializable {
+    public struct Rule: DictionarySerializable {
         
-        enum Kind {
+        public enum Kind {
             case exception(Bool) // bool is for first word flag
             case suffix([Declension : Mod])
         }
@@ -48,7 +48,7 @@ class Petrovich: PetrovichProtocol, PropertyListSerializable {
         let gender: Gender
         let tests: [String]
         
-        init(kind: Kind, gender: Gender, tests: [String]) {
+        public init(kind: Kind, gender: Gender, tests: [String]) {
             self.kind = kind
             self.gender = gender
             self.tests = tests
@@ -93,7 +93,7 @@ class Petrovich: PetrovichProtocol, PropertyListSerializable {
         }
         
         // MARK: process methods
-        func matches(with value: String, gender: Gender, first: Bool) -> Bool {
+        public func matches(with value: String, gender: Gender, first: Bool) -> Bool {
             if gender != self.gender && self.gender != .androgynous {
                 return false
             }
@@ -114,7 +114,7 @@ class Petrovich: PetrovichProtocol, PropertyListSerializable {
             return false
         }
         
-        func apply(_ value: String, declension: Declension) -> String {
+        public func apply(_ value: String, declension: Declension) -> String {
             switch kind {
             case .exception(_):
                 return value
@@ -140,15 +140,15 @@ class Petrovich: PetrovichProtocol, PropertyListSerializable {
     }
     
     // MARK: petrovich protocol methods
-    func firstname(_ value: String, gender: Gender, declension: Declension) -> String {
+    open func firstname(_ value: String, gender: Gender, declension: Declension) -> String {
         return process(value, gender: gender, declension: declension, with: firstnameRules)
     }
     
-    func middlename(_ value: String, gender: Gender, declension: Declension) -> String {
+    open func middlename(_ value: String, gender: Gender, declension: Declension) -> String {
         return process(value, gender: gender, declension: declension, with: middlenameRules)
     }
     
-    func lastname(_ value: String, gender: Gender, declension: Declension) -> String {
+    open func lastname(_ value: String, gender: Gender, declension: Declension) -> String {
         return process(value, gender: gender, declension: declension, with: lastnameRules)
     }
     
@@ -174,7 +174,7 @@ class Petrovich: PetrovichProtocol, PropertyListSerializable {
     // MARK: plist serialization, shared instance
     static let shared = Petrovich(withContentsOf: "Petrovich")!
     
-    required convenience init?(withContentsOf plist: String) {
+    required convenience public init?(withContentsOf plist: String) {
         guard let path = Bundle.main.path(forResource: plist, ofType: "plist"),
             let dict = NSDictionary(contentsOfFile: path) as? [String : AnyObject] else {
                 return nil
