@@ -8,9 +8,9 @@
 
 import Cocoa
 
-class Petrovich: PetrovichProtocol {
+class Petrovich: PetrovichProtocol, PropertyListSerializable {
     
-    struct Mod {
+    struct Mod: StringSerializable {
         
         let letters: Int
         let suffix: String
@@ -22,9 +22,17 @@ class Petrovich: PetrovichProtocol {
             // add suffix value
             return string + suffix
         }
+        
+        // MARK: serialization
+        init?(withContentsOf string: String) {
+            let letters = string.characters.count
+            let suffix = string.trimmingCharacters(in: CharacterSet(charactersIn: "-"))
+            self.letters = letters
+            self.suffix = suffix
+        }
     }
     
-    struct Rule {
+    struct Rule: DictionarySerializable {
         
         enum Kind {
             case exception(Bool) // bool is for first word flag
@@ -35,6 +43,45 @@ class Petrovich: PetrovichProtocol {
         let gender: Gender
         let tests: [String]
         
+        // MARK: serialization method
+        init?(dict: [String : AnyObject]) {
+            guard let exception = dict["exception"] as? Bool,
+                let genderValue = dict["gender"] as? Int,
+                let gender = Gender(rawValue: genderValue),
+                let tests = dict["tests"] as? [String] else {
+                return nil
+            }
+            // init kind value
+            let kind: Kind
+            if exception { // exception
+                guard let firstFlag = dict["first_word"] as? Bool else {
+                    return nil
+                }
+                kind = .exception(firstFlag)
+            } else { // suffix
+                guard let items = dict["suffixes"] as? [String] else {
+                    return nil
+                }
+                var suffixes = [Declension : Mod]()
+                // parse
+                for index in 0..<items.count {
+                    let value = items[index]
+                    // there's no item for nominative declension, so first one will be for dative
+                    guard let declension = Declension(rawValue: index + 1),
+                        let mod = Mod(withContentsOf: value) else {
+                            continue
+                    }
+                    suffixes[declension] = mod
+                }
+                kind = .suffix(suffixes)
+            }
+            // set properties
+            self.kind = kind
+            self.gender = gender
+            self.tests = tests
+        }
+        
+        // MARK: process methods
         func matches(with value: String, gender: Gender, first: Bool) -> Bool {
             if gender != self.gender && self.gender != .androgynous {
                 return false
@@ -70,6 +117,7 @@ class Petrovich: PetrovichProtocol {
         }
     }
     
+    // MARK: - Petrovich properties
     fileprivate let firstnameRules: [Rule]
     fileprivate let middlenameRules: [Rule]
     fileprivate let lastnameRules: [Rule]
@@ -80,7 +128,7 @@ class Petrovich: PetrovichProtocol {
         self.lastnameRules = lastnameRules
     }
     
-    // MARK: - petrovich protocol methods
+    // MARK: petrovich protocol methods
     func firstname(_ value: String, gender: Gender, declension: Declension) -> String {
         return process(value, gender: gender, declension: declension, with: firstnameRules)
     }
@@ -111,4 +159,38 @@ class Petrovich: PetrovichProtocol {
         }
         return result.trimmingCharacters(in: set)
     }
+    
+    // MARK: plist serialization, shared instance
+    static let shared = Petrovich(withContentsOf: "Petrovich")!
+    
+    required convenience init?(withContentsOf plist: String) {
+        guard let path = Bundle.main.path(forResource: plist, ofType: "plist"),
+            let dict = NSDictionary(contentsOfFile: path) as? [String : AnyObject] else {
+                return nil
+        }
+        guard let first = dict["firstnames"] as? [AnyObject],
+            let middles = dict["middlenames"] as? [AnyObject],
+            let lasts = dict["lastnames"] as? [AnyObject] else {
+            return nil
+        }
+        let firstnames = createRules(from: first)
+        let middlenames = createRules(from: middles)
+        let lastnames = createRules(from: lasts)
+        // use
+        self.init(firstnameRules: firstnames, middlenameRules: middlenames, lastnameRules: lastnames)
+    }
+    
+}
+
+fileprivate func createRules(from array: [AnyObject]) -> [Petrovich.Rule] {
+    var result: [Petrovich.Rule] = []
+    // iterate
+    for object in array {
+        guard let dict = object as? [String : AnyObject],
+            let rule = Petrovich.Rule(dict: dict) else {
+                continue
+        }
+        result.append(rule)
+    }
+    return result
 }

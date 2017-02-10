@@ -14,8 +14,8 @@ enum Gender: Int {
     case androgynous
 }
 
-enum Declension {
-    case nominative
+enum Declension: Int {
+    case nominative = 0
     case genitive
     case dative
     case accusative
@@ -41,4 +41,9 @@ protocol DictionarySerializable {
 protocol PropertyListSerializable {
     
     init?(withContentsOf plist: String)
+}
+
+protocol StringSerializable {
+    
+    init?(withContentsOf string: String)
 }
