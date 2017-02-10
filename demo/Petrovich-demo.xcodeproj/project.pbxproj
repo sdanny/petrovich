@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0946A5A60C7651BC930866B8 /* Pods_PetrovichTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7EB38E2EB40A7BF967E03F /* Pods_PetrovichTests.framework */; };
 		60474DA409FC357007FCF482 /* Pods_Petrovich_demoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D10DF2104C0FB4C5C9A8AD7 /* Pods_Petrovich_demoTests.framework */; };
+		9D25C60C1E4DB30300576920 /* Petrovich.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D25C60B1E4DB30300576920 /* Petrovich.plist */; };
 		9D358CA51E4B5D0A00B25C08 /* Petrovich.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D358CA31E4B5D0A00B25C08 /* Petrovich.swift */; };
 		9D358CA61E4B5D0A00B25C08 /* PetrovichProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D358CA41E4B5D0A00B25C08 /* PetrovichProtocol.swift */; };
 		9D358CA81E4C4E4D00B25C08 /* PetrovichRuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D358CA71E4C4E4D00B25C08 /* PetrovichRuleTests.swift */; };
@@ -59,6 +60,7 @@
 		73DB3E9E5FCFC7C4A9FCA71E /* Pods_Petrovich_demoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petrovich_demoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		829321D295A7AAC59136A837 /* Pods-Petrovich-demoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petrovich-demoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Petrovich-demoUITests/Pods-Petrovich-demoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		948549F23CC0172DF2E1E4E6 /* Pods_Petrovich_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petrovich_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D25C60B1E4DB30300576920 /* Petrovich.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Petrovich.plist; sourceTree = "<group>"; };
 		9D358CA31E4B5D0A00B25C08 /* Petrovich.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Petrovich.swift; sourceTree = "<group>"; };
 		9D358CA41E4B5D0A00B25C08 /* PetrovichProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetrovichProtocol.swift; sourceTree = "<group>"; };
 		9D358CA71E4C4E4D00B25C08 /* PetrovichRuleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetrovichRuleTests.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				9D358CA41E4B5D0A00B25C08 /* PetrovichProtocol.swift */,
 				9D358CA31E4B5D0A00B25C08 /* Petrovich.swift */,
+				9D25C60B1E4DB30300576920 /* Petrovich.plist */,
 			);
 			name = src;
 			path = ../src;
@@ -364,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D823DE01E4B2209004A8A53 /* Assets.xcassets in Resources */,
+				9D25C60C1E4DB30300576920 /* Petrovich.plist in Resources */,
 				9D823DE31E4B2209004A8A53 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
