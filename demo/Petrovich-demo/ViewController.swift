@@ -51,6 +51,10 @@ class ViewController: NSViewController {
         let firstname = components[1]
         let middlename = components[2]
         genOutput.stringValue = petrovich.lastname(lastname, gender: gender, declension: .genitive) + " " + petrovich.firstname(firstname, gender: gender, declension: .genitive) + " " + petrovich.middlename(middlename, gender: gender, declension: .genitive)
+        datOutput.stringValue = petrovich.lastname(lastname, gender: gender, declension: .dative) + " " + petrovich.firstname(firstname, gender: gender, declension: .dative) + " " + petrovich.middlename(middlename, gender: gender, declension: .dative)
+        accOutput.stringValue = petrovich.lastname(lastname, gender: gender, declension: .accusative) + " " + petrovich.firstname(firstname, gender: gender, declension: .accusative) + " " + petrovich.middlename(middlename, gender: gender, declension: .accusative)
+        insOutput.stringValue = petrovich.lastname(lastname, gender: gender, declension: .instrumental) + " " + petrovich.firstname(firstname, gender: gender, declension: .instrumental) + " " + petrovich.middlename(middlename, gender: gender, declension: .instrumental)
+        preOutput.stringValue = petrovich.lastname(lastname, gender: gender, declension: .prepositional) + " " + petrovich.firstname(firstname, gender: gender, declension: .prepositional) + " " + petrovich.middlename(middlename, gender: gender, declension: .prepositional)
         
     }
 }
