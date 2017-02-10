@@ -35,7 +35,7 @@ class Petrovich: PetrovichProtocol {
         let gender: Gender
         let tests: [String]
         
-        func submits(_ value: String, gender: Gender, first: Bool) -> Bool {
+        func matches(with value: String, gender: Gender, first: Bool) -> Bool {
             if gender != self.gender && self.gender != .androgynous {
                 return false
             }
@@ -94,7 +94,8 @@ class Petrovich: PetrovichProtocol {
     }
     
     fileprivate func process(_ value: String, gender: Gender, declension: Declension, with rules: [Rule]) -> String {
-        let words = value.components(separatedBy: "-")
+        let set = CharacterSet(charactersIn: "-")
+        let words = value.components(separatedBy: set)
         // iterate through the words
         var result = ""
         for index in 0..<words.count {
@@ -102,12 +103,12 @@ class Petrovich: PetrovichProtocol {
             let word = words[index]
             // iterate through the rules
             for rule in rules {
-                if rule.submits(word, gender: gender, first: first) {
-                    result += "-" + rule.apply(word, declension: declension)
+                if rule.matches(with: word, gender: gender, first: first) {
+                    result += rule.apply(word, declension: declension) + "-"
                     break
                 }
             }
         }
-        return result
+        return result.trimmingCharacters(in: set)
     }
 }

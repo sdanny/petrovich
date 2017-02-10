@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import Nimble
+@testable import Petrovich_demo
 
 class PetrovichTests: XCTestCase {
     
@@ -20,16 +22,20 @@ class PetrovichTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testUsesFirstMatch() {
+        // create rules
+        let dativeCaseFirst = [Declension.dative : Petrovich.Mod(letters: 0, suffix: "у")]
+        let first = Petrovich.Rule(kind: Petrovich.Rule.Kind.suffix(dativeCaseFirst), gender: .male, tests: ["ич"])
+        let dativeCaseSecond = [Declension.dative : Petrovich.Mod(letters: 0, suffix: "")]
+        let second = Petrovich.Rule(kind: Petrovich.Rule.Kind.suffix(dativeCaseSecond), gender: .male, tests: ["ич"])
+        // check both matches to petrovich
+        let value = "Петрович"
+        expect(first.matches(with: value, gender: .male, first: true)).to(equal(second.matches(with: value, gender: .male, first: true)))
+        // create helper
+        let petrovich = Petrovich(firstnameRules: [], middlenameRules: [first, second], lastnameRules: [])
+        // check uses first match
+        let result = petrovich.middlename(value, gender: .male, declension: .dative)
+        expect(result).to(equal("Петровичу"))
     }
     
 }

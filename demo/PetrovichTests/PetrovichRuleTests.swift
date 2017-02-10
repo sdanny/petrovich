@@ -24,32 +24,32 @@ class PetrovichRuleTests: XCTestCase {
 
     func testReturnsFalseWithEmptyTests() {
         let rule = Petrovich.Rule(kind: Petrovich.Rule.Kind.suffix([:]), gender: .male, tests: [String]())
-        expect(rule.submits("Петрович", gender: .male, first: false)).to(equal(false))
+        expect(rule.matches(with: "Петрович", gender: .male, first: false)).to(equal(false))
     }
     
     func testSubmitsOnFirstWordException() {
         let rule = Petrovich.Rule(kind: Petrovich.Rule.Kind.exception(true), gender: .male, tests: ["петрович"])
-        expect(rule.submits("Петрович", gender: .male, first: true)).to(equal(true))
+        expect(rule.matches(with: "Петрович", gender: .male, first: true)).to(equal(true))
     }
     
     func testDoesntSubmitOnFirstException() {
         let rule = Petrovich.Rule(kind: Petrovich.Rule.Kind.exception(true), gender: .male, tests: ["петрович"])
-        expect(rule.submits("Петрович", gender: .male, first: false)).to(equal(false))
+        expect(rule.matches(with: "Петрович", gender: .male, first: false)).to(equal(false))
     }
     
     func testSubmitsOnHasTestSuffix() {
         let rule = Petrovich.Rule(kind: Petrovich.Rule.Kind.suffix([:]), gender: .male, tests: ["ич", "ян"])
-        expect(rule.submits("Петрович", gender: .male, first: true)).to(equal(true))
+        expect(rule.matches(with: "Петрович", gender: .male, first: true)).to(equal(true))
     }
     
     func testDoesntSubmitOnHasntTestSuffix() {
         let rule = Petrovich.Rule(kind: Petrovich.Rule.Kind.suffix([:]), gender: .male, tests: ["ник", "ян"])
-        expect(rule.submits("Петрович", gender: .male, first: true)).to(equal(false))
+        expect(rule.matches(with: "Петрович", gender: .male, first: true)).to(equal(false))
     }
     
     func testSubmitsOnAndrogynousRule() {
         let rule = Petrovich.Rule(kind: Petrovich.Rule.Kind.suffix([:]), gender: .androgynous, tests: ["вич"])
-        expect(rule.submits("Петрович", gender: .male, first: true)).to(equal(true))
+        expect(rule.matches(with: "Петрович", gender: .male, first: true)).to(equal(true))
     }
     
     func testAppliesValueHavingMod() {
