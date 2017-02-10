@@ -156,19 +156,23 @@ open class Petrovich: PetrovichProtocol, PropertyListSerializable {
         let set = CharacterSet(charactersIn: "-")
         let words = value.components(separatedBy: set)
         // iterate through the words
-        var result = ""
+        var string = ""
         for index in 0..<words.count {
             let first = index == 0
             let word = words[index]
             // iterate through the rules
             for rule in rules {
                 if rule.matches(with: word, gender: gender, first: first) {
-                    result += rule.apply(word, declension: declension) + "-"
+                    string += rule.apply(word, declension: declension) + "-"
                     break
                 }
             }
         }
-        return result.trimmingCharacters(in: set)
+        if string.characters.count > 0 {
+            return string.trimmingCharacters(in: set)
+        } else {
+            return value
+        }
     }
     
     // MARK: plist serialization, shared instance

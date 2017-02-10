@@ -44,4 +44,9 @@ class PetrovichTests: XCTestCase {
         expect(petrovich.middlename("Павлович", gender: .male, declension: .dative)).to(equal("Павловичу"))
         expect(petrovich.lastname("Берия", gender: .male, declension: .dative)).to(equal("Берии"))
     }
+    
+    func testShouldReturnInputValueWhileNoRuleMatching() {
+        let petrovich = Petrovich(firstnameRules: [], middlenameRules: [], lastnameRules: [])
+        expect(petrovich.middlename("Ивановн", gender: .female, declension: .genitive)).to(equal("Ивановн"))
+    }
 }
