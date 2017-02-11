@@ -1,12 +1,15 @@
 PODS:
   - Nimble (6.0.1)
+  - petrovich (0.1.4)
 
 DEPENDENCIES:
   - Nimble
+  - petrovich
 
 SPEC CHECKSUMS:
   Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
+  petrovich: 49ce7dd20a632452c0bfb8ec7a5236483f8b735d
 
-PODFILE CHECKSUM: 5ca84620df553a1a16b6a5dce011ec040f7427a1
+PODFILE CHECKSUM: 9f7d9450f65fcd5ec2816e901765f6a2697e4dad
 
 COCOAPODS: 1.2.0

@@ -6,6 +6,7 @@ target 'Petrovich-demo' do
   use_frameworks!
 
   # Pods for Petrovich-demo
+  pod 'petrovich'
 
   target 'Petrovich-demoTests' do
     inherit! :search_paths

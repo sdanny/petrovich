@@ -1,0 +1,6 @@
+framework module petrovich {
+  umbrella header "petrovich-umbrella.h"
+
+  export *
+  module * { export * }
+}
