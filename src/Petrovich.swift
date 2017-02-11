@@ -179,7 +179,12 @@ open class Petrovich: PetrovichProtocol, PropertyListSerializable {
     static open let shared = Petrovich(withContentsOf: "Petrovich")!
     
     required convenience public init?(withContentsOf plist: String) {
-        guard let path = Bundle.main.path(forResource: plist, ofType: "plist"),
+        let podBundle = Bundle(for: type(of: self))
+        guard let bundleUrl = podBundle.url(forResource: "Petrovich", withExtension: "bundle"),
+            let bundle = Bundle(url: bundleUrl) else {
+            return nil
+        }
+        guard let path = bundle.path(forResource: plist, ofType: "plist"),
             let dict = NSDictionary(contentsOfFile: path) as? [String : AnyObject] else {
                 return nil
         }
