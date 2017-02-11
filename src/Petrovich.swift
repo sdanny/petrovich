@@ -6,7 +6,7 @@
 //  Copyright © 2017 Runtime LLC. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 open class Petrovich: PetrovichProtocol, PropertyListSerializable {
     
