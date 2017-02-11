@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'petrovich'
-  s.version          = '0.1.4'
+  s.version          = '0.1.5'
   s.summary          = 'Simple iOS/macOS library for cyrillic names declension written in swift.'
   s.homepage         = 'https://github.com/SDanny/petrovich'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

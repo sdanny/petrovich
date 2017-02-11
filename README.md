@@ -14,8 +14,8 @@ and import the module in .swift-file:
 #Usage
 ``` swift
     let petrovich = Petrovich.shared
-    let firstname = petrovich.firstname("Иван", gender: .male, declension: .dative) // Ивану
-    let lastname = petrovich.lastname("Григорьев-Апполонов", gender: .male: declension: .instrumental) // Грегорьевым-Апполоновым
+    let firstname = petrovich.firstname("РРІР°РЅ", gender: .male, declension: .dative) // РРІР°РЅСѓ
+    let lastname = petrovich.lastname("Р“СЂРёРіРѕСЂСЊРµРІ-РђРїРїРѕР»РѕРЅРѕРІ", gender: .male: declension: .instrumental) // Р“СЂРёРіРѕСЂСЊРµРІС‹Рј-РђРїРїРѕР»РѕРЅРѕРІС‹Рј
 ```
 
 ### Maintainers
