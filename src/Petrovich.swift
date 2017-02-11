@@ -176,7 +176,7 @@ open class Petrovich: PetrovichProtocol, PropertyListSerializable {
     }
     
     // MARK: plist serialization, shared instance
-    static let shared = Petrovich(withContentsOf: "Petrovich")!
+    static open let shared = Petrovich(withContentsOf: "Petrovich")!
     
     required convenience public init?(withContentsOf plist: String) {
         guard let path = Bundle.main.path(forResource: plist, ofType: "plist"),
